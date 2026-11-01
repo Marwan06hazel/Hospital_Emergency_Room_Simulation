@@ -1,5 +1,73 @@
 public class messageDisplay {
-    public void displayMessage(String msg){
-        System.out.println(msg);
+
+    // === Patient Messages ===
+
+    public static synchronized void patientArrived(int patientId) {
+        System.out.println("P" + patientId + " arrived.");
+    }
+
+    public static synchronized void patientWaitingOutside(int patientId) {
+        System.out.println("P" + patientId +
+                " is waiting outside for an available seat.");
+    }
+
+    public static synchronized void patientEntered(int patientId) {
+        System.out.println("P" + patientId + " entered the waiting room.");
+    }
+
+    public static synchronized void patientLeft(int patientId) {
+        System.out.println("P" + patientId + " left the hospital.");
+    }
+
+
+    //  === Waiting Room Messages ===
+
+    public static synchronized void waitingRoomFull() {
+        System.out.println("The waiting room is full.");
+    }
+
+    public static synchronized void patientReturned(int doctorId, int patientId) {
+        System.out.println("Doctor " + doctorId +
+                " is sending P" + patientId + " back to the waiting room.");
+    }
+
+
+    //  === Doctor Messages ===
+
+    public static synchronized void doctorAssigned(int doctorId, int patientId) {
+        System.out.println("Doctor " + doctorId +
+                " is assigned to P" + patientId + ".");
+    }
+
+    public static synchronized void doctorTryingToAcquireRoom(int doctorId) {
+        System.out.println("Doctor " + doctorId +
+                " is trying to acquire a treatment room.");
+    }
+
+    public static synchronized void doctorAcquiredRoom(int doctorId) {
+        System.out.println("Doctor " + doctorId +
+                " acquired a treatment room.");
+    }
+
+    public static synchronized void doctorFailedToAcquireRoom(int doctorId) {
+        System.out.println("Doctor " + doctorId +
+                " could not acquire a treatment room within 3 seconds.");
+    }
+
+    public static synchronized void treatmentStarted(int doctorId, int patientId) {
+        System.out.println("Doctor " + doctorId +
+                " started treating P" + patientId + ".");
+    }
+
+    public static synchronized void treatmentFinished(int doctorId, int patientId) {
+        System.out.println("Doctor " + doctorId +
+                " finished treating P" + patientId + ".");
+    }
+
+
+    //  === Simulation Messages ===
+
+    public static synchronized void simulationCompleted() {
+        System.out.println("Simulation completed.");
     }
 }
