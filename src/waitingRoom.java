@@ -6,7 +6,6 @@ public class waitingRoom {
     private Semaphore emptySeats;
     private Semaphore availablePatients = new Semaphore(0);
     private Semaphore mutex = new Semaphore(1);
-    private messageDisplay msgDisplay = new messageDisplay();
 
 
 
@@ -17,8 +16,8 @@ public class waitingRoom {
     public void enter(Patient patient){
         try{
             if(!emptySeats.tryAcquire(0)){
-                msgDisplay.displayMessage("The waiting room is full.");
-                msgDisplay.displayMessage(patient + " is waiting outside for an available seat.");
+                messageDisplay.waitingRoomFull();
+                messageDisplay.patientWaitingOutside(patient.getPatientId());
                 emptySeats.acquire();
             }
         }catch(InterruptedException e){
@@ -31,7 +30,7 @@ public class waitingRoom {
             try {
                 patients.offer(patient);
                 availablePatients.release();
-                msgDisplay.displayMessage( patient + " entered the waiting room.");
+                messageDisplay.patientEntered(patient.getPatientId());
             }
             finally{
                 mutex.release();
