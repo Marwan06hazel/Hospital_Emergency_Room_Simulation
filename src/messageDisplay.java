@@ -36,7 +36,7 @@ public class messageDisplay {
 
     public static synchronized void doctorAssigned(int doctorId, int patientId) {
         System.out.println("Doctor " + doctorId +
-                " is assigned to P" + patientId + ".");
+                " is assigned to Patient " + patientId + ".");
     }
 
     public static synchronized void doctorTryingToAcquireRoom(int doctorId) {
@@ -53,17 +53,26 @@ public class messageDisplay {
         System.out.println("Doctor " + doctorId +
                 " could not acquire a treatment room within 3 seconds.");
     }
-
+    
+    public static synchronized void doctorReleasedRoom(int doctorId) {
+        System.out.println("Doctor " + doctorId + 
+                " released the treatment room.");
+    }
+                           
     public static synchronized void treatmentStarted(int doctorId, int patientId) {
         System.out.println("Doctor " + doctorId +
-                " started treating P" + patientId + ".");
+                " started treating Patient " + patientId + ".");
     }
 
     public static synchronized void treatmentFinished(int doctorId, int patientId) {
         System.out.println("Doctor " + doctorId +
-                " finished treating P" + patientId + ".");
+                " finished treating Patient " + patientId + ".");
     }
-
+    
+    public static synchronized void doctorAvailable(int doctorId, int patientId) {
+         System.out.println("Doctor " + doctorId + 
+                " is now available.");
+    }
 
     //  === Simulation Messages ===
 
