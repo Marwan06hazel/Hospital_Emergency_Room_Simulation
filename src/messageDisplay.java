@@ -69,7 +69,7 @@ public class messageDisplay {
                 " finished treating Patient " + patientId + ".");
     }
     
-    public static synchronized void doctorAvailable(int doctorId, int patientId) {
+    public static synchronized void doctorAvailable(int doctorId) {
          System.out.println("Doctor " + doctorId + 
                 " is now available.");
     }
