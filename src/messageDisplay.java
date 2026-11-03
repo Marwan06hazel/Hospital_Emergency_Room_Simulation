@@ -2,6 +2,17 @@ public class messageDisplay {
 
     // === Patient Messages ===
 
+    public static synchronized void patientsArriving(int numPatients){
+
+        System.out.println("Patients arriving:");
+
+        for (int i = 1; i <= numPatients; i++) {
+            System.out.print("P" + i + " ");
+        }
+
+        System.out.println();
+    }
+
     public static synchronized void patientArrived(int patientId) {
         System.out.println("P" + patientId + " arrived.");
     }
@@ -19,6 +30,9 @@ public class messageDisplay {
         System.out.println("P" + patientId + " left the hospital.");
     }
 
+    public static synchronized void allPatientsTreated() {
+        System.out.println("All patients have been treated.");
+    }
 
     //  === Waiting Room Messages ===
 
@@ -30,7 +44,6 @@ public class messageDisplay {
         System.out.println("Doctor " + doctorId +
                 " is sending P" + patientId + " back to the waiting room.");
     }
-
 
     //  === Doctor Messages ===
 

@@ -1,12 +1,16 @@
+import java.util.Set;
+
 public class Doctor extends Thread {
     private final int doctorId;
     private final waitingRoom waitingRoom;
     private final treatmentRoom treatmentRoom;
+    private final Semaphore treatedPatients;
 
-    public Doctor(int id, waitingRoom wt, treatmentRoom tr){
+    public Doctor(int id, waitingRoom wt, treatmentRoom tr, Semaphore tp) {
         this.doctorId = id;
         this.waitingRoom = wt;
         this.treatmentRoom = tr;
+        this.treatedPatients = tp;
     }
 
     public int getDoctorId(){
@@ -41,6 +45,7 @@ public class Doctor extends Thread {
                     // announce the doctor availability, and discharging the patient
                     messageDisplay.doctorAvailable(doctorId);
                     messageDisplay.patientLeft(patient.getPatientId());
+                    treatedPatients.release();
 
                 } else{// if the doctor couldn't get a treatment room
                     // sending the patient back to the waiting room
