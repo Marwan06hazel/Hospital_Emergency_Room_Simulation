@@ -7,8 +7,6 @@ public class waitingRoom {
     private Semaphore availablePatients = new Semaphore(0);
     private Semaphore mutex = new Semaphore(1);
 
-
-
     public waitingRoom(int capacity){
         emptySeats = new Semaphore(capacity);
     }
@@ -65,7 +63,6 @@ public class waitingRoom {
         } finally{
             mutex.release();
         }
-        
         
         return leftPatient;
     }
