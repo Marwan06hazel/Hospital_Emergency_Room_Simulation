@@ -29,7 +29,7 @@ public class Hospital {
                     Patient patient = new Patient(i, waitingRoom);
                     patients.add(patient);
                     patient.start();
-                    Thread.sleep(1000 + (int) (Math.random() * 3001));
+                    Thread.sleep(1000 + (int) (Math.random() * 400));
                 }
 
                 for (int i = 0; i < numPatients; i++) {
