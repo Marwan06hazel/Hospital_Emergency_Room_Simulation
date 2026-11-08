@@ -259,6 +259,7 @@ public class HospitalApp extends Application {
         Slider slider = new Slider(min, max, defaultVal);
         slider.setBlockIncrement(1);
         slider.setMajorTickUnit(1);
+        slider.setMinorTickCount(0);
         slider.setSnapToTicks(true);
         slider.setStyle("-fx-control-inner-background: #0d7d73;");
         return slider;
