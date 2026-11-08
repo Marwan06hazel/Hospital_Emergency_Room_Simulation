@@ -31,7 +31,7 @@ public class Doctor extends Thread {
                     try {
                         messageDisplay.doctorAcquiredRoom(doctorId);
                         messageDisplay.treatmentStarted(doctorId, patient.getPatientId());
-                        Thread.sleep(2000 + (int)(Math.random() * 3000));
+                        Thread.sleep(5000 + (int)(Math.random() * 3000));
                         messageDisplay.treatmentFinished(doctorId, patient.getPatientId());
                     } finally {
                         treatmentRoom.releaseTreatmentRoom();
@@ -48,7 +48,7 @@ public class Doctor extends Thread {
                     waitingRoom.enter(patient);
                     messageDisplay.doctorAvailable(doctorId);
                 }
-            } catch (InterruptedException e) {
+            } catch(InterruptedException e) {
                 Thread.currentThread().interrupt();
                 break;
             }
